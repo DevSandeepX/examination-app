@@ -10,3 +10,7 @@ export const instructions = [
     "Internet Access: Users must have a stable internet connection to take the exam. Any network disruptions may result in the exam being paused and/or invalidated.",
     "Exam Submission: Once the user has answered all questions or the exam time expires, the exam will be automatically submitted. No changes can be made after the exam is submitted."
 ];
+
+
+export const userDetails = 
+    {name:"Sandeep", roll_number:"GO1234",subject:"O Level",isExamFinished:false,profile_img:"https://stock.adobe.com/search?k=indian+school+students"}
