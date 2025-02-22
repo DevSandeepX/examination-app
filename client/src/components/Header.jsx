@@ -7,6 +7,7 @@ const Header = () => {
     const timer = setInterval(() => {
       setCount(prevCount => {
         if (prevCount > 0) {
+          
           return prevCount - 1;
         }
         clearInterval(timer); // Optionally clear interval when count reaches 0
@@ -33,7 +34,7 @@ const Header = () => {
 
       {/* Question Count */}
       <div className="text-center">
-        <h2 className="font-semibold">Count: <span className="font-bold">{count}</span></h2>
+        <h2 className="font-semibold">Count: <span className="font-bold">{count >=10?count:"0"+count}</span></h2>
       </div>
 
       {/* Profile Image */}
