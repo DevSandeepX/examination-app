@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ExamPannel = () => {
+const Header = () => {
   return (
     <div className='px-32'>
         
@@ -8,4 +8,4 @@ const ExamPannel = () => {
   )
 }
 
-export default ExamPannel
+export default Header
