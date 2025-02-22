@@ -1,9 +1,10 @@
 import React from 'react'
+import Header from '../components/Header'
 
 const ExamPannel = () => {
   return (
-    <div className='px-32'>
-        
+    <div className=''>
+        <Header/>
     </div>
   )
 }
