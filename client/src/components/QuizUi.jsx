@@ -16,10 +16,12 @@ const [isLoading, setIsLoading] = useState(true)
 
 const onSubmit = (e)=>{
 e.preventDefault()
+if(userSelected == null) return
+
 if(questions.length - 1 === currentQuestionIndex){
-  setIsExamFinished(true)
   return null
-}else {
+}
+
 if(currentQuestion.answer == userSelected){
   setRight(prev=>[...prev, currentQuestion])
 }else{
@@ -28,15 +30,18 @@ if(currentQuestion.answer == userSelected){
 
 setAttempt(prev=>[...prev, currentQuestion])
 setCurrentQuestionIndex(prev=>prev+1)
+
 setUserSelected(null)
-}
 
 }
 
 useEffect(()=>{
   console.log("Attempt ",attempt.length)
   console.log("Right ",right.length)
-  console.log("Wrong",wrong.length)
+  console.log("Wrong ",wrong.length)
+  if(questions.length - 1 === currentQuestionIndex){
+    setIsExamFinished(true)
+  }
   setCurrentQuestion(questions[currentQuestionIndex])
 },[currentQuestionIndex])
 
@@ -70,11 +75,11 @@ useEffect(()=>{
           {
             isExamFinished?(<button
               type="submit"
-              onClick={()=>navigate('/finish-exam')}
+              onClick={()=>navigate(`/finish-exam/${123}`)}
               className='mt-6 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition' >
               {'Finish Exam'}
             </button>):(<button
-            type="submit"
+            type="submit" 
             className='mt-6 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition' >
             {'Submit'}
           </button>)

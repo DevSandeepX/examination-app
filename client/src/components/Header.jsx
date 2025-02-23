@@ -1,23 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { userDetails } from '../assets/assets';
+import { useNavigate } from 'react-router-dom';
 const Header = () => {
-  const [count, setCount] = useState(30);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCount(prevCount => {
-        if (prevCount > 0) {
-          
-          return prevCount - 1;
-        }
-        clearInterval(timer); // Optionally clear interval when count reaches 0
-        return 0;
-      });
-    }, 1000);
-
-    // Clean up the interval on component unmount
-    return () => clearInterval(timer);
-  }, []);
+  const navigate = useNavigate()
   return (
     <div className="px-8 md:px-32 flex flex-wrap items-center justify-between w-full bg-blue-700 text-white text-lg py-4 shadow-md">
       {/* User Info */}
@@ -32,10 +17,7 @@ const Header = () => {
         <h2 className="font-semibold">Remaining: <span className="text-yellow-300 font-bold">1:29</span></h2>
       </div>
 
-      {/* Question Count */}
-      <div className="text-center">
-        <h2 className="font-semibold">Count: <span className="font-bold">{count >=10?count:"0"+count}</span></h2>
-      </div>
+     
 
       {/* Profile Image */}
       <div className="flex gap-4">
@@ -47,7 +29,7 @@ const Header = () => {
       </div>
 
       {/* Finish Exam Button */}
-      <button className="bg-white text-blue-700 font-semibold px-5 py-2 rounded-lg hover:bg-gray-200 transition">
+      <button onClick={()=>navigate(`/finish-exam/${userDetails.roll_number}`)} className="bg-white text-blue-700 font-semibold px-5 py-2 rounded-lg hover:bg-gray-200 transition">
         Finish Exam
       </button>
     </div>
