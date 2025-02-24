@@ -11,6 +11,7 @@ const Sidebar = () => {
         <h2 className='px-2 text-xl mt-2'>Dashboard</h2>
         <div>
             <NavLink to={'/'} className='flex gap-2 items-center my-4 px-2 py-2 rounded'><LuLayoutDashboard /> Dashboard</NavLink>
+            <NavLink to={'/apply-exam'} className='flex gap-2 items-center my-4 px-2 py-2 rounded'><LuLayoutDashboard /> Apply Exam</NavLink>
             <NavLink to={'/examination'} className='flex gap-2 items-center my-4 px-2 py-2 rounded'><PiExam /> Exam Pannel</NavLink>
             <NavLink to={'/result'} className='flex gap-2 items-center my-4 px-2 py-2 rounded'><AiOutlineSafetyCertificate /> Result</NavLink>
         </div>
