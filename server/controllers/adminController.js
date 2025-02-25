@@ -1,3 +1,5 @@
+import { Student } from "../models/schema.js"
+
 const addStudent = async (req, res) => {
     /*
      1. take input from frontend --> name, rollNumber, image, course
@@ -15,10 +17,18 @@ const addStudent = async (req, res) => {
     if (!name || !rollNumber || !course) {
         return res.json({ success: false, message: "Fields are missing " })
     }
-    
+
     try {
-        const image = req.file?.image
-        console.log(image)
+        const studentExist = await Student.findOne({ rollNumber })
+        if (studentExist) {
+            return res.json({ success: false, message: "Roll number already taken" })
+        }
+
+        const image = req.file?.path
+
+        const student = new Student({ name, rollNumber, course, image })
+        await student.save()
+        return res.json({ success: true, message: "Student added successfully", student })
     } catch (error) {
         return res.json({ success: false, message: error.message })
     }
@@ -34,6 +44,8 @@ const addQuestion = async (req, res) => {
     4. create a new question and save it into db
     5. return response with success and a message
     */
+
+    
 
 }
 
